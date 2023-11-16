@@ -32,10 +32,8 @@ if(isset($_POST['phone-number'])){
     else {
         echo json_encode('Ваша страна не найдена');
     }
-    
 }
 else {  ?>
-
 
 <!doctype html>
 <html lang="ru">
@@ -48,12 +46,16 @@ else {  ?>
 
     <title>ТЗ для Гризли</title>
     <style>
-
         html, body {
             height: 100%;
         }
         .w-80{
             width:80%;
+        }
+        .br-position{
+            position: absolute;
+            bottom: 0;
+            right: 30px;
         }
     </style>
   </head>
@@ -77,6 +79,25 @@ else {  ?>
                 </form>
                 <div id="result_form"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное Окно  -->
+    <div class="modal" id="overlay" tabindex="-1" >
+        <div class="modal-dialog br-position">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Осторожно кукисы!</h5>
+                <button type="button" class="btn-close "  data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Тут используются кукисы! Нажми Принять чтобы увидеть его следующий раз завтра, иначе он будет тебя преслееееедовааааать \О.О/
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" id="hide_popup">Принять</button>
+            </div>
             </div>
         </div>
     </div>
@@ -110,7 +131,47 @@ else {  ?>
                     jQuery(result_form).html('Error');
                 }
             });
+        }
+
+        //проверка куки
+        function getCookie(name) {
+            var cookie_arr = document.cookie.split('; ');
+            var cookie_obj = {};
+            for (var i=0; i<cookie_arr.length; i++) {
+                var nv = cookie_arr[i].split('=');
+                cookie_obj[nv[0]] = nv[1]; 
             }
+            return cookie_obj[name];
+        }        
+
+        //наше модальное окно
+        var myModal = new bootstrap.Modal(document.getElementById('overlay'), {
+            keyboard: false
+        })
+
+        if ( getCookie('hide_popup') == 'yes' ) {
+            myModal.hide();
+        }
+        else {
+            myModal.show();
+        }
+
+        // При нажатии на кнопку ставим cookie, которая будет запрещать показ модального окна
+        document.getElementById('hide_popup')
+            .addEventListener('click', function() { 
+                // Ставим cookie на минуту.                
+                var date = new Date(new Date().getTime() + 60000);
+                // Cтавим cookie на день. 
+                //var date = new Date(new Date().getTime() + 86 400 000);
+
+                document.cookie = "hide_popup=yes; path=/; expires=" + date.toUTCString();
+
+                // и сразу же скрываем окно
+                myModal.hide();
+            });
+    
+    
+    
     </script>
 
 </body>
