@@ -43,11 +43,15 @@ else {  ?>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
 
     <title>ТЗ для Гризли</title>
     <style>
         html, body {
             height: 100%;
+            background-color: #82e5b0;
         }
         .w-80{
             width:80%;
@@ -57,6 +61,95 @@ else {  ?>
             bottom: 0;
             right: 30px;
         }
+        #baner.baner-background{
+            background-image: url('image backround.svg');
+            background-size: cover;
+            margin-bottom:120px;
+        }
+        #baner #block-info{
+            margin-top: 56px;
+            margin-bottom: 55px; 
+            padding: 40px 104px 40px 32px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.24);
+            box-shadow: 0px 0px 20px 0px rgba(205, 205, 205, 0.25);
+            backdrop-filter: blur(20px);
+        }
+        #baner #title-baner{
+            color: #2E2E2E;
+            font-family: Nunito;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 130%; 
+            margin-bottom:22px;
+        }
+        #baner #list-baner{
+            color: #2E2E2E;
+            font-family: Nunito;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%; 
+            margin-bottom:30px;
+        }
+        #baner #list-baner ul {
+            padding-left:0;
+        }
+        #baner #list-baner ul li{
+            margin-bottom:10px;
+            list-style-type: none; 
+            padding-left: 24px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(%23clip0_1115_97)"><path d="M3.33337 7.99984L6.66671 11.3332L13.3334 4.6665" stroke="%232E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1115_97"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>') 0 0 no-repeat;
+        }
+        #baner #button-baner
+        {
+            border-radius: 4px;
+            background: #78599C;
+            color: #FFF;
+            font-family: Nunito;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%; 
+            padding:12px 40px;
+        }
+        @media screen and (max-width: 991px) {
+            #baner #block-info{
+                margin-top: 0px;
+                margin-bottom: 0px; 
+                padding: 32px 15px 77px 15px;
+                border-radius: 0px;
+                background: none;
+                box-shadow: none;
+                backdrop-filter: none;
+            }
+
+            #baner.baner-background{
+                background-image: url('mini-background.png');
+                background-size: cover;
+                margin-bottom:80px;
+                background-position: bottom;
+            }
+            #baner #title-baner{
+                font-size: 20px;
+            }
+            #baner #list-baner{
+                font-size: 14px;
+                margin-bottom:16px;
+            }
+            #baner #list-baner ul li{
+                margin-bottom:8px;
+                background-position-y: 2px;
+            }
+            #baner #button-baner
+            {
+                font-size: 14px;
+                padding:10px 40px;
+            }
+
+        }
+
     </style>
   </head>
   <body >
@@ -82,6 +175,34 @@ else {  ?>
             </div>
         </div>
     </div>
+    <div class="baner-background" id="baner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-12" id="block-info">
+                    <div id="title-baner">
+                        <h1>Fulfillment dla Twojego e&#8209;Commerce</h1>
+                    </div >  
+                    <div id="list-baner">
+                        <ul>
+                            <li>Przyjęcie i magazynowanie produktów</li>
+                            <li>Kompletacja i pakowanie</li>
+                            <li>Obsługa zwrotów i reklamacji</li>
+                            <li>Współpraca ze wszystkimi dostępnymi przewoźnikami</li>
+                            <li>Integracja z Twoją platformą e&#8209;Commerce</li>
+                        </ul>
+                    </div>
+                    <div >
+                    <button type="button" class="btn" id="button-baner">Więcej</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div >
+        ___
+    </div >  
+
+
     
     <!-- Модальное Окно  -->
     <div class="modal" id="overlay" tabindex="-1" >
